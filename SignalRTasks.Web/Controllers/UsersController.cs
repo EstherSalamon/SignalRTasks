@@ -20,10 +20,10 @@ namespace SignalRTasks.Web.Controllers
 
         [HttpPost]
         [Route("signup")]
-        public void SignUp(SignUpVM sivm)
+        public void SignUp(SignUpVM vm)
         {
             UserRepository repository = new UserRepository(_connectionString);
-            repository.AddUser(sivm.User, sivm.User.Password);
+            repository.AddUser(vm.User, vm.User.Password);
         }
 
         [HttpGet]
@@ -41,10 +41,10 @@ namespace SignalRTasks.Web.Controllers
 
         [HttpPost]
         [Route("login")]
-        public User LogIn(LogInVM livm)
+        public User LogIn(LogInVM vm)
         {
             UserRepository repository = new UserRepository(_connectionString);
-            User user = repository.LogIn(livm.Email, livm.Password);
+            User user = repository.LogIn(vm.Email, vm.Password);
 
             if (user == null)
             {
